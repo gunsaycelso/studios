@@ -1,0 +1,801 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: navy;
+  background-color: aliceblue;
+}
+
+img {
+  max-width: 100%;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  z-index: -1;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 12px 6vw;
+  background-color: black;
+  border-bottom: 4px solid goldenrod;
+}
+
+.logo {
+  position: relative;
+  color: navy;
+  font-family: "Palatino Linotype", Palatino, serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.topbar nav a {
+  position: relative;
+  margin-left: 18px;
+  color: navy;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.topbar nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 3px;
+  background-color: goldenrod;
+  transition: width 0.25s;
+}
+
+.topbar nav a:hover::after {
+  width: 100%;
+}
+
+.name {
+  position: relative;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 12px 26px;
+  background-color: navy;
+  border: 3px solid navy;
+  border-radius: 8px;
+  color: ivory;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(90deg, transparent, white, transparent);
+  opacity: 0.55;
+  transform: skewX(-20deg);
+  transition: left 0.6s;
+  pointer-events: none;
+}
+
+.btn:hover {
+  background-color: goldenrod;
+  color: navy;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 0 navy;
+}
+
+.btn:hover::before {
+  left: 130%;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 40px;
+  min-height: 100vh;
+  padding: 110px 6vw 60px;
+}
+
+.hero h1 {
+  display: inline-block;
+  font-size: clamp(4.5rem, 15vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: -3px;
+  color: navy;
+  background-image: linear-gradient(90deg, navy 0%, navy 45%, goldenrod 100%);
+  background-size: 220% 100%;
+  background-position: 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s, transform 0.2s;
+}
+
+.hero h1:hover {
+  background-position: 100% 0;
+  transform: rotate(-1.5deg);
+}
+
+.tagline {
+  display: inline-block;
+  margin: 18px 0 14px;
+  padding-bottom: 4px;
+  border-bottom: 5px solid goldenrod;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: underline-grow 1.2s ease-out 1;
+}
+
+@keyframes underline-grow {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+.hero-text p:not(.tagline) {
+  max-width: 32em;
+  margin-bottom: 26px;
+}
+
+.lanyard {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 320px);
+}
+
+.lanyard::before {
+  content: "";
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  width: 26px;
+  height: 260px;
+  margin-left: -13px;
+  background-color: navy;
+  border-left: 3px solid goldenrod;
+  border-right: 3px solid goldenrod;
+}
+
+.badge {
+  position: relative;
+  margin-top: 40px;
+  padding: 38px 20px 20px;
+  background-color: ivory;
+  border: 3px solid navy;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 goldenrod;
+  text-align: center;
+  transform: rotate(2deg);
+  transform-origin: top center;
+  animation: swing 2.2s ease-out 1;
+}
+
+.badge:hover {
+  animation: swing-again 1.6s ease-out 1;
+}
+
+.badge::before,
+.member::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 54px;
+  height: 12px;
+  margin-left: -27px;
+  background-color: gainsboro;
+  border: 2px solid navy;
+  border-radius: 8px;
+}
+
+.badge img {
+  display: block;
+  width: 100%;
+  border: 3px solid navy;
+  border-radius: 8px;
+}
+
+.badge-name {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: "Palatino Linotype", Palatino, serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.badge-name:hover {
+  color: darkgoldenrod;
+  transform: scale(1.1);
+}
+
+.badge-role {
+  margin-top: 4px;
+  padding: 2px 0;
+  border-radius: 4px;
+  background-color: navy;
+  color: goldenrod;
+  font-weight: bold;
+}
+
+@keyframes swing {
+  0%   { transform: rotate(-9deg); }
+  30%  { transform: rotate(6deg); }
+  60%  { transform: rotate(-3deg); }
+  100% { transform: rotate(2deg); }
+}
+
+@keyframes swing-again {
+  0%   { transform: rotate(-9deg); }
+  30%  { transform: rotate(6deg); }
+  60%  { transform: rotate(-3deg); }
+  100% { transform: rotate(2deg); }
+}
+
+.panel {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 6vw 40px;
+  scroll-margin-top: 20px;
+}
+
+.panel h1,
+.panel h2,
+.members h2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2.6rem;
+}
+
+.panel h1::after,
+.panel h2::after,
+.members h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40%;
+  height: 5px;
+  background-color: goldenrod;
+  transition: width 0.4s;
+}
+
+.panel h1:hover::after,
+.panel h2:hover::after,
+.members h2:hover::after {
+  width: 100%;
+}
+
+.panel-note {
+  margin-bottom: 30px;
+  color: darkslategray;
+}
+
+.panel h1 + *:not(.panel-note),
+.panel h2 + *:not(.panel-note) {
+  margin-top: 24px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.about-text p {
+  max-width: 34em;
+  margin-bottom: 14px;
+}
+
+.about-facts {
+  padding: 20px 24px;
+  background-color: navy;
+  border-bottom: 8px solid goldenrod;
+  border-radius: 14px;
+  color: ivory;
+}
+
+.about-facts div {
+  padding: 9px 0;
+  border-bottom: 1px dotted lightsteelblue;
+  transition: padding-left 0.2s, background-color 0.2s;
+}
+
+.about-facts div:hover {
+  padding-left: 12px;
+  background-color: midnightblue;
+}
+
+.about-facts div:last-child {
+  border-bottom: none;
+}
+
+.about-facts dt {
+  color: goldenrod;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.about-facts dd {
+  overflow-wrap: break-word;
+}
+
+.members {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 6vw 70px;
+  scroll-margin-top: 20px;
+}
+
+.members-note {
+  margin: 14px 0 36px;
+  color: darkslategray;
+}
+
+.member-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 28px;
+}
+
+.member {
+  position: relative;
+  display: block;
+  padding: 36px 14px 16px;
+  background-color: ivory;
+  border: 3px solid navy;
+  border-radius: 14px;
+  box-shadow: 5px 5px 0 goldenrod;
+  color: navy;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.member:hover {
+  transform: translate(-4px, -6px) rotate(-1.5deg);
+  box-shadow: 10px 10px 0 goldenrod;
+}
+
+.member img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 3px solid navy;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.member:hover img {
+  transform: scale(1.05) rotate(1.5deg);
+}
+
+.member h3 {
+  position: relative;
+  margin-top: 10px;
+  font-size: 1.15rem;
+}
+
+.member:hover h3 {
+  color: darkgoldenrod;
+}
+
+.member p {
+  color: darkslategray;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.member::after {
+  content: "View record";
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  border-radius: 4px;
+  background-color: navy;
+  color: goldenrod;
+  font-size: 0.85rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: max-height 0.25s, opacity 0.25s, margin-top 0.25s, padding 0.25s;
+}
+
+.member:hover::after {
+  max-height: 40px;
+  margin-top: 10px;
+  padding: 4px 0;
+  opacity: 1;
+}
+
+.record {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 6vw 30px;
+}
+
+.id-side {
+  position: sticky;
+  top: 90px;
+  align-self: start;
+  padding: 22px 20px;
+  background-color: navy;
+  border-bottom: 8px solid goldenrod;
+  border-radius: 14px;
+  color: ivory;
+  text-align: center;
+}
+
+.id-side img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 3px solid goldenrod;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.id-side img:hover {
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.id-side h2 {
+  display: inline-block;
+  margin-top: 14px;
+  color: ivory;
+  font-size: 1.5rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.id-side h2:hover {
+  color: goldenrod;
+  transform: scale(1.06);
+}
+
+.id-side p {
+  color: goldenrod;
+  font-weight: bold;
+}
+
+.record-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.record-nav a {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: goldenrod;
+  color: navy;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.record-nav a:hover {
+  background-color: ivory;
+  transform: translateY(-3px);
+}
+
+.record-body {
+  padding: 28px 30px;
+  background-color: ivory;
+  border: 3px solid navy;
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 goldenrod;
+}
+
+.record-body h3 {
+  margin: 24px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid navy;
+  font-size: 1.3rem;
+}
+
+.record-body h3:first-child {
+  margin-top: 0;
+}
+
+.record-body dl div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dotted slategray;
+  transition: padding-left 0.2s, background-color 0.2s;
+}
+
+.record-body dl div:hover {
+  padding-left: 10px;
+  background-color: lightyellow;
+}
+
+.record-body dt {
+  color: darkslategray;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.record-body dd {
+  overflow-wrap: break-word;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 22px 6vw;
+  background-color: navy;
+  border-top: 4px solid goldenrod;
+  color: ivory;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.butterflies {
+  --dir: -1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.logo .butterflies {
+  --dir: 1;
+}
+
+.butterflies i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+  perspective: 160px;
+  opacity: 0;
+  background: linear-gradient(navy, navy) center / 4px 76% no-repeat;
+}
+
+.butterflies i::before,
+.butterflies i::after {
+  content: "";
+  position: absolute;
+  top: 6%;
+  width: 50%;
+  height: 88%;
+  border: 2px solid navy;
+}
+
+.butterflies i::before {
+  left: 0;
+  border-radius: 100% 15% 85% 30%;
+  background: radial-gradient(circle at 55% 35%, ivory 0 15%, transparent 16%), var(--color);
+  transform-origin: right center;
+}
+
+.butterflies i::after {
+  right: 0;
+  border-radius: 15% 100% 30% 85%;
+  background: radial-gradient(circle at 45% 35%, ivory 0 15%, transparent 16%), var(--color);
+  transform-origin: left center;
+}
+
+.butterflies i:nth-child(1) { --dx: -240px; --dy: 420px; --sway: 40px;  --rot: -25deg; --size: 36px; --dur: 3.2s; --delay: 0s;    --color: orchid; }
+.butterflies i:nth-child(2) { --dx: -120px; --dy: 300px; --sway: -50px; --rot: 20deg;  --size: 28px; --dur: 2.8s; --delay: 0.08s; --color: goldenrod; }
+.butterflies i:nth-child(3) { --dx: -30px;  --dy: 480px; --sway: 60px;  --rot: -15deg; --size: 44px; --dur: 3.8s; --delay: 0.16s; --color: deepskyblue; }
+.butterflies i:nth-child(4) { --dx: 60px;   --dy: 260px; --sway: -40px; --rot: 30deg;  --size: 30px; --dur: 2.6s; --delay: 0.24s; --color: coral; }
+.butterflies i:nth-child(5) { --dx: 160px;  --dy: 400px; --sway: 50px;  --rot: -30deg; --size: 40px; --dur: 3.5s; --delay: 0.32s; --color: mediumpurple; }
+.butterflies i:nth-child(6) { --dx: 260px;  --dy: 340px; --sway: -60px; --rot: 25deg;  --size: 32px; --dur: 3s;   --delay: 0.4s;  --color: hotpink; }
+
+.name:focus .butterflies i,
+.name:active .butterflies i,
+.logo:focus .butterflies i,
+.logo:active .butterflies i,
+.member:focus .butterflies i,
+.member:active .butterflies i {
+  animation: fly var(--dur) ease-in-out var(--delay) forwards;
+}
+
+.name:focus .butterflies i::before,
+.name:active .butterflies i::before,
+.logo:focus .butterflies i::before,
+.logo:active .butterflies i::before,
+.member:focus .butterflies i::before,
+.member:active .butterflies i::before {
+  animation: flap-left 0.22s ease-in-out infinite alternate;
+}
+
+.name:focus .butterflies i::after,
+.name:active .butterflies i::after,
+.logo:focus .butterflies i::after,
+.logo:active .butterflies i::after,
+.member:focus .butterflies i::after,
+.member:active .butterflies i::after {
+  animation: flap-right 0.22s ease-in-out infinite alternate;
+}
+
+@keyframes flap-left {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(70deg); }
+}
+
+@keyframes flap-right {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-70deg); }
+}
+
+@keyframes fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(calc(var(--dx) * 0.45 + var(--sway)), calc(var(--dy) * 0.5 * var(--dir)))
+                scale(1) rotate(calc(var(--rot) * -1));
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), calc(var(--dy) * var(--dir))) scale(0.9) rotate(var(--rot));
+  }
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid darkorange;
+  outline-offset: 3px;
+}
+
+
+.topbar nav .mem {
+  display: none;
+}
+
+body:not(:has(.record:target, .sub:target)) .m-gunsay {
+  display: inline-block;
+}
+
+
+body:has(:is(#d-gunsay, #gunsay-hobbies, #gunsay-achievements, #gunsay-certificates, #gunsay-contact):target) .m-gunsay {
+  display: inline-block;
+}
+body:has(:is(#d-manangan, #manangan-hobbies, #manangan-achievements, #manangan-certificates, #manangan-contact):target) .m-manangan {
+  display: inline-block;
+}
+body:has(:is(#d-bulan, #bulan-hobbies, #bulan-achievements, #bulan-certificates, #bulan-contact):target) .m-bulan {
+  display: inline-block;
+}
+body:has(:is(#d-retrato, #retrato-hobbies, #retrato-achievements, #retrato-certificates, #retrato-contact):target) .m-retrato {
+  display: inline-block;
+}
+body:has(:is(#d-bascos, #bascos-hobbies, #bascos-achievements, #bascos-certificates, #bascos-contact):target) .m-bascos {
+  display: inline-block;
+}
+
+.sub {
+  scroll-margin-top: 110px;
+}
+
+.sub:target {
+  animation: subFlash 1.4s ease;
+}
+
+@keyframes subFlash {
+  0%, 60% { background-color: lightyellow; }
+  100%    { background-color: transparent; }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .lanyard {
+    margin-top: 60px;
+  }
+
+  .lanyard::before {
+    top: -60px;
+    height: 120px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record {
+    grid-template-columns: 1fr;
+  }
+
+  .id-side {
+    position: static;
+  }
+
+  .record-body {
+    padding: 22px 16px;
+  }
+
+  .record-body dl div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .topbar nav a {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none important;
+    transition: none important;
+  }
+
+  .butterflies {
+    display: none;
+  }
+}
